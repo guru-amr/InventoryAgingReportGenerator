@@ -3,68 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Inventory Aging Analytics</title>
+  <title>Inventory Aging Report Generator</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="animated-background">
-    <div class="bg-layer layer-1"></div>
-    <div class="bg-layer layer-2"></div>
-    <div class="bg-layer layer-3"></div>
-    <div class="floating-particles"></div>
-    <div class="geometric-shapes">
-      <div class="shape circle-1"></div>
-      <div class="shape circle-2"></div>
-      <div class="shape triangle-1"></div>
-      <div class="shape triangle-2"></div>
-      <div class="shape square-1"></div>
-      <div class="shape square-2"></div>
-    </div>
-    <div class="magic-sparkles">
-      <div class="sparkle sparkle-1">✨</div>
-      <div class="sparkle sparkle-2">⭐</div>
-      <div class="sparkle sparkle-3">💫</div>
-      <div class="sparkle sparkle-4">🌟</div>
-      <div class="sparkle sparkle-5">✨</div>
-      <div class="sparkle sparkle-6">⭐</div>
-    </div>
-  </div>
   <div class="app-container">
     <header class="header">
-      <div class="title-container">
-        <h1 class="animated-title">🤖 Inventory Detective Agency 🕵️</h1>
-        <div class="title-glow"></div>
-      </div>
-      <p class="subtitle-animated">🔍 Solving the mystery of aging inventory, one spreadsheet at a time! 📊</p>
-      <div class="fun-badges">
-        <span class="badge">🏆 #1 Inventory Sleuth</span>
-        <span class="badge">✨ Magic Reports</span>
-        <span class="badge">🚀 Super Fast</span>
-      </div>
-      <div class="header-waves"></div>
+      <h1>Inventory Aging Report Generator</h1>
+      <p class="subtitle">Transform your Excel data into actionable business insights</p>
     </header>
 
     <main class="main-content">
       <div class="upload-section">
         <div class="drop-zone" id="dropZone">
           <div class="drop-content">
-            <div class="upload-icon-container">
-              <div class="upload-icon rotating">📊</div>
-              <div class="icon-rings">
-                <div class="ring ring-1"></div>
-                <div class="ring ring-2"></div>
-                <div class="ring ring-3"></div>
-              </div>
-            </div>
-            <h3 class="drop-title">🎯 Feed me your Excel files! 😋</h3>
-            <p class="drop-subtitle">I'm hungry for data! <span class="browse-link glowing" onclick="document.getElementById('excelFile').click()">🐈 Click to hunt files</span></p>
-            <div class="fun-messages">
-              <div class="message-bubble">💬 "I love crunching numbers!"</div>
-              <div class="message-bubble">💬 "CSV files are my favorite snack!"</div>
-            </div>
+            <div class="upload-icon">📊</div>
+            <h3>Upload Your Excel File</h3>
+            <p>Drag and drop your file here or <span class="browse-link" onclick="document.getElementById('excelFile').click()">browse to select</span></p>
             <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" hidden>
-            <div class="upload-particles"></div>
           </div>
         </div>
         
@@ -76,42 +33,41 @@
           <button class="remove-file" onclick="removeFile()">✕</button>
         </div>
 
-        <div class="options-panel fun-panel">
-          <h4>🎉 Report Superpowers! 🦸</h4>
+        <div class="options-panel">
+          <h4>Report Options</h4>
           <div class="option-group">
-            <label class="fun-checkbox"><input type="checkbox" id="includeCharts" checked> 📈 Pretty Charts (Eye Candy!)</label>
-            <label class="fun-checkbox"><input type="checkbox" id="includeSummary" checked> 📊 Boss-Level Summary</label>
-            <label class="fun-checkbox"><input type="checkbox" id="includeRecommendations" checked> 🤖 AI Fortune Telling</label>
+            <label><input type="checkbox" id="includeCharts" checked> Include Charts</label>
+            <label><input type="checkbox" id="includeSummary" checked> Include Summary</label>
+            <label><input type="checkbox" id="includeRecommendations" checked> Include AI Recommendations</label>
           </div>
         </div>
 
-        <div class="age-limits-panel fun-panel">
-          <h4>🎂 Age-O-Matic Settings! 🕰️</h4>
+        <div class="age-limits-panel">
+          <h4>Aging Thresholds (Days)</h4>
           <div class="age-inputs">
-            <div class="age-input-group fun-input">
-              <label>🌱 Baby Fresh (0 to</label>
+            <div class="age-input-group">
+              <label>Fresh (0 to</label>
               <input type="number" id="freshLimit" value="30" min="1" max="365">
-              <span>days) 👶</span>
+              <span>days)</span>
             </div>
-            <div class="age-input-group fun-input">
-              <label>😎 Getting Older (to</label>
+            <div class="age-input-group">
+              <label>Moderate (to</label>
               <input type="number" id="moderateLimit" value="60" min="31" max="365">
-              <span>days) 👨</span>
+              <span>days)</span>
             </div>
-            <div class="age-input-group fun-input">
-              <label>😵 Feeling Old (to</label>
+            <div class="age-input-group">
+              <label>Aging (to</label>
               <input type="number" id="agingLimit" value="90" min="61" max="365">
-              <span>days) 👴</span>
+              <span>days)</span>
             </div>
-            <div class="age-note fun-note">
-              <small>🚨 Beyond this = ANCIENT RELIC STATUS! 🏺</small>
+            <div class="age-note">
+              <small>Items beyond this threshold are considered critical</small>
             </div>
           </div>
         </div>
 
-        <button class="generate-btn magic-btn" id="generateBtn" onclick="uploadFile()" disabled>
-          <span class="btn-text">🪄 Cast Report Spell!</span>
-          <span class="btn-icon">✨</span>
+        <button class="generate-btn" id="generateBtn" onclick="uploadFile()" disabled>
+          Generate Report
         </button>
       </div>
 
@@ -126,51 +82,47 @@
       </div>
 
       <div class="preview-section" id="previewSection" style="display:none">
-        <h3>🎆 Magic Crystal Ball Dashboard! 🔮</h3>
+        <h3>Inventory Overview</h3>
         <div class="stats-grid">
-          <div class="stat-card fun-card">
-            <div class="card-emoji">📦</div>
+          <div class="stat-card">
             <div class="stat-number" id="totalItems">0</div>
-            <div class="stat-label">Total Treasures</div>
+            <div class="stat-label">Total Items</div>
           </div>
-          <div class="stat-card fun-card danger">
-            <div class="card-emoji">🚨</div>
+          <div class="stat-card critical">
             <div class="stat-number" id="criticalItems">0</div>
-            <div class="stat-label">Ancient Relics</div>
+            <div class="stat-label">Critical Items</div>
           </div>
-          <div class="stat-card fun-card money">
-            <div class="card-emoji">💰</div>
+          <div class="stat-card">
             <div class="stat-number" id="totalValue">₹0</div>
-            <div class="stat-label">Treasure Chest</div>
+            <div class="stat-label">Total Value</div>
           </div>
-          <div class="stat-card fun-card">
-            <div class="card-emoji">🏷️</div>
+          <div class="stat-card">
             <div class="stat-number" id="categoryCount">0</div>
-            <div class="stat-label">Magic Categories</div>
+            <div class="stat-label">Categories</div>
           </div>
         </div>
         
         <div class="charts-grid">
-          <div class="chart-container fun-chart">
-            <h4>🎂 Age-O-Meter Pie! 🥧</h4>
+          <div class="chart-container">
+            <h4>Aging Distribution</h4>
             <canvas id="agingChart" width="200" height="150"></canvas>
           </div>
-          <div class="chart-container fun-chart">
-            <h4>🏷️ Category Carnival! 🎠</h4>
+          <div class="chart-container">
+            <h4>Category Breakdown</h4>
             <canvas id="categoryChart" width="200" height="150"></canvas>
           </div>
-          <div class="chart-container fun-chart">
-            <h4>🚨 Danger-O-Scope! 🔭</h4>
+          <div class="chart-container">
+            <h4>Risk Analysis</h4>
             <canvas id="riskChart" width="200" height="150"></canvas>
           </div>
-          <div class="chart-container fun-chart">
-            <h4>🧮 Magic Matrix! ✨</h4>
+          <div class="chart-container">
+            <h4>Category vs Aging Matrix</h4>
             <canvas id="matrixChart" width="200" height="150"></canvas>
           </div>
         </div>
         
-        <div class="insights-panel fun-insights" id="insightsPanel">
-          <h4>🔮 Fortune Teller's Wisdom! 🧙‍♀️</h4>
+        <div class="insights-panel" id="insightsPanel">
+          <h4>AI Insights & Recommendations</h4>
           <div class="insights-list" id="insightsList"></div>
         </div>
       </div>
