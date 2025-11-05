@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: inventory-aging-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
