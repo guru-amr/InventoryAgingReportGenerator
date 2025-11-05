@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  inventory-app:
+    build: .
+    ports:
+      - "80:80"
+      - "8080:8080"
+    container_name: inventory-aging-full-app
+    restart: unless-stopped
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - JAVA_OPTS=-Xmx512m
